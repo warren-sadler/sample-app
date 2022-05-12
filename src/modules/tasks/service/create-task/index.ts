@@ -1,14 +1,13 @@
 import { PrismaClient, Task } from "@prisma/client";
+import { CreateTaskRequest } from "./schema";
 
 interface CreateCreateTaskParams {
   prismaClient: PrismaClient;
 }
 
-type CreateTaskParams = Pick<Task, "title">;
-
-export function createCreateTasks(params: CreateCreateTaskParams) {
+export function createCreateTask(params: CreateCreateTaskParams) {
   const { prismaClient } = params;
-  return async function createTasks(params: CreateTaskParams) {
+  return async function createTask(params: CreateTaskRequest): Promise<Task> {
     return await prismaClient.task.create({
       data: params,
     });

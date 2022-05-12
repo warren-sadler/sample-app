@@ -7,6 +7,10 @@ interface CreateListTasksParams {
 export function createListTasks(params: CreateListTasksParams) {
   const { prismaClient } = params;
   return async function listTasks() {
-    return await prismaClient.task.findMany();
+    return (await prismaClient.task.findMany()).map((task) => ({
+      ...task,
+      createdAt: task.createdAt.toISOString(),
+      updatedAt: task.updatedAt.toISOString(),
+    }));
   };
 }

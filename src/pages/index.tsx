@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -12,8 +12,22 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <nav>
+          <ul>
+            <li>
+              <Link href="/tasks" passHref>
+                <a>Tasks</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/tasks/create" passHref>
+                <a>Make New Task</a>
+              </Link>
+            </li>
+          </ul>
+        </nav>
         <header>
-          <h2>Create A Task</h2>
+          <h2>Simple Task App</h2>
         </header>
       </main>
     </div>
